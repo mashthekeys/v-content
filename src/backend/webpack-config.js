@@ -9,6 +9,7 @@ const SASS = require("sass");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const VuetifyLoaderPlugin = require("vuetify-loader/lib/plugin")
 const fs = require("fs");
+const config = require("../config/config.js");
 
 
 function makeConfig({name: appName, folder: appFolder, watch}) {
@@ -19,7 +20,7 @@ function makeConfig({name: appName, folder: appFolder, watch}) {
 
   appFolder = appFolder || path.resolve(__dirname, '../../dist/' + appName);
 
-  const baseUrl = "/staff/" + appName + "/";
+  const baseUrl = config.BASE_URL[appName];
 
   let favicon = publicFolder + '/favicon.ico';
 
@@ -72,7 +73,7 @@ function makeConfig({name: appName, folder: appFolder, watch}) {
   };
 
 
-  const config = {
+  return {
     entry: '@/backend/entry-cms',
     output: {
       filename: 'cms.bundle@[chunkhash].js',
@@ -208,7 +209,6 @@ function makeConfig({name: appName, folder: appFolder, watch}) {
     devtool: 'source-map',
     ...watchOptions,
   };
-  return config;
 }
 
 module.exports = makeConfig;
