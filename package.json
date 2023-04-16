@@ -7,7 +7,7 @@
   "author": "Andy Holland (https://github.com/mashthekeys)",
   "license": "MIT",
   "scripts": {
-    "build": "npm run build:cache && build:local_modules && npm run build:cms",
+    "build": "npm run build:cache && npm run build:local_modules && npm run build:cms",
     "build:cache": "mkdir -p cache",
     "build:cms": "node_modules/.bin/webpack --mode development --config src/backend/webpack-config-prod.js",
     "build:local_modules": "mkdir -p local_modules && git clone https://github.com/mashthekeys/v-json-editor.git local_modules/v-json-editor",
