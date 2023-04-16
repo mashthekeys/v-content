@@ -1,0 +1,94 @@
+{
+  "name": "v-content",
+  "version": "0.1.0",
+  "description": "A database-based CMS for Vue projects.",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Andy Holland (https://github.com/mashthekeys)",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run build:cache && build:local_modules && npm run build:cms",
+    "build:cache": "mkdir -p cache",
+    "build:cms": "node_modules/.bin/webpack --mode development --config src/backend/webpack-config-prod.js",
+    "build:local_modules": "mkdir -p local_modules && git clone https://github.com/mashthekeys/v-json-editor.git local_modules/v-json-editor",
+    "clean": "npm run clean:npm && npm run clean:cms && npm run clean:cms-dev",
+    "clean:cms": "rm -rf ./dist/cms/*;",
+    "clean:cms-dev": "rm -rf ./dist/cms-dev/*;",
+    "clean:local_modules": "rm -rf ./local_modules/*;",
+    "clean:npm": "rm -rf node_modules/.cache",
+    "deploy:cms": "babel-node bin/deploy.js cms",
+    "deploy:cms-dev": "babel-node bin/deploy.js cms-dev",
+    "install:cms-dev": "pm2 del cms-dev 1>/dev/null || true; pm2 start --name=cms-dev --namespace=v-content npm -- run serve:cms-dev",
+    "lint": "vue-cli-service lint",
+    "refresh:cms": "npm run clean:cms && npm run build:cms && npm run deploy:cms",
+    "refresh:cms-dev": "npm run uninstall:cms-dev && npm run clean:cms-dev && npm run install:cms-dev",
+    "serve:cms-dev": "node_modules/.bin/webpack --mode development --config src/backend/webpack-config-dev.js",
+    "uninstall:cms-dev": "pm2 del cms-dev 1>/dev/null || true; npm run clean:cms-dev && npm run deploy:cms-dev"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-logical-assignment-operators": "^7.14.5",
+    "@panter/vue-i18next": "^0.15.2",
+    "@ungap/event-target": "^0.2.2",
+    "@vue/preload-webpack-plugin": "^1.1.2",
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "core-js": "^3.15.1",
+    "deep-freeze-es6": "^1.4.1",
+    "element-closest": "^3.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "i18next": "^20.3.2",
+    "iso-639-3": "^3.0.1",
+    "isomorphic-fetch": "^3.0.0",
+    "mysql2": "^2.2.5",
+    "node-cache": "^5.1.2",
+    "vue": "^2.6.14",
+    "vue-async-computed": "^3.9.0",
+    "vue-router": "^3.5.2",
+    "vue-server-renderer": "^2.6.14",
+    "vuedraggable": "^2.24.3",
+    "vuetify": "^2.4.0",
+    "vuex": "^3.6.2",
+    "vuex-enhanced-router-sync": "^1.0.0"
+  },
+  "devDependencies": {
+    "@akryum/vue-cli-plugin-ssr": "^0.6.0",
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
+    "@babel/node": "^7.14.7",
+    "@babel/preset-env": "^7.14.7",
+    "@vue/cli-plugin-babel": "^4.5.13",
+    "@vue/cli-plugin-eslint": "^4.5.13",
+    "@vue/cli-plugin-router": "^4.5.13",
+    "@vue/cli-plugin-vuex": "^4.5.13",
+    "@vue/cli-service": "^4.5.13",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^7.12.1",
+    "sass": "~1.32.0",
+    "sass-loader": "^10.0.0",
+    "vue-cli-plugin-vuetify": "~2.4.1",
+    "vue-template-compiler": "^2.6.14",
+    "vuetify-loader": "^1.7.0",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.7.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 4 versions",
+    "not dead"
+  ]
+}
