@@ -11,7 +11,7 @@
     "build:cache": "mkdir -p cache",
     "build:cms": "node_modules/.bin/webpack --mode development --config src/backend/webpack-config-prod.js",
     "build:local_modules": "mkdir -p local_modules && npm run fetch:v-json-editor",
-    "clean": "npm run clean:npm && npm run clean:cms && npm run clean:cms-dev && npm run clean:local_modules",
+    "clean": "npm run clean:npm && npm run clean:cms && npm run clean:cms-dev && npm run clean:local_modules && rm -rf node_modules/.cache",
     "clean:cms": "rm -rf ./dist/cms/*;",
     "clean:cms-dev": "rm -rf ./dist/cms-dev/*;",
     "clean:local_modules": "rm -rf ./local_modules/*;",
