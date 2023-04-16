@@ -32,6 +32,15 @@ function makeConfig({name: appName, folder: appFolder, watch}) {
     // ignored
   }
 
+  try {
+    let appStylesheet = rootFolder + '/config/backend-styles.css';
+    if (fs.existsSync(appStylesheet)) {
+      fs.copyFileSync(appStylesheet, rootFolder + "/dist/backend-styles.css");
+    }
+  } catch (ignored) {
+    fs.writeFileSync(rootFolder + "/dist/backend-styles.css", "", "utf-8");
+  }
+
   const htmlOptions = {
     title: 'CMS',
     favicon: favicon,

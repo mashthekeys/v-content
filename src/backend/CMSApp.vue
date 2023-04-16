@@ -36,6 +36,8 @@ export default {
 </script>
 
 <style>
+/*noinspection CssUnknownTarget*/
+@import url(../../dist/backend-styles.css);
 
 div.CMSApp--warning {
   border: rgba(218, 165, 32, 0.5) 1px;
