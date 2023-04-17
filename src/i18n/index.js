@@ -32,12 +32,6 @@ export default function createI18n(options) {
     });
 
 
-  try {
-    window.sb_i18next = instance;
-  } catch (referenceError) {
-    // Ignored
-  }
-
   const i18n = new VueI18Next(instance);
 
     return (promise
