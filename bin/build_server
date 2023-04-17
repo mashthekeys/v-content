@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+[ -d ./dist ] || exit 1;
+
+mkdir -p ./build/local_modules/v-json-editor
+
+cp -R ./local_modules/v-json-editor/* build/local_modules/v-json-editor/
+
+cp -R ./config ./src ./plugins ./build/
+
+npx babel --copy-files --config-file ./babel-node.config.js -s -d ./dist/server ./build
+
+date >./dist/server/build_timestamp
+
+rm -rf ./build/*
+

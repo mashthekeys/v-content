@@ -1,6 +1,8 @@
 /.idea/
+/build/
 /cache/
 /config/
 /dist/
 /local_modules/
 /node_modules/
+/plugins/

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+if [ ! -f "src/$ENTRY" ]; then
+    echo "Entry point not found: '$ENTRY'";
+    exit 1;
+fi
+
+if [ ! "$PORT" ]; then
+    echo "Port not defined.";
+    exit 1;
+fi
+
+# Do not rebuild if last build was less than 60 seconds ago
+recentBuild="$(find "dist/server/build_timestamp" -mmin -1)";
+
+[ -z "$recentBuild" ] && npm run "build:server";
+
+node "dist/server/src/$ENTRY"
+

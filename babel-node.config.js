@@ -4,5 +4,8 @@ module.exports = {
   ],
   presets: [
     '@babel/preset-env'
-  ]
+  ],
+  ignore: [
+    'node_modules/@akryum/vue-cli-plugin-ssr/generator/templates'
+  ],
 }
