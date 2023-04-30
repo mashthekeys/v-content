@@ -39,6 +39,9 @@ export default {
 /*noinspection CssUnknownTarget*/
 @import url(../../dist/backend-styles.css);
 
+/*noinspection CssUnknownTarget*/
+@import url(../cms/cmsHTML.css);
+
 div.CMSApp--warning {
   border: rgba(218, 165, 32, 0.5) 1px;
   border-radius: 2px;
