@@ -36,7 +36,7 @@
     "serve:cms-dev": "node_modules/.bin/webpack --mode development --config src/backend/webpack-config-dev.js",
     "serve:server-be": "npx cross-env NODE_ENV=production PORT=64001 PUBLIC_URL='/~server-be' ENTRY='server/entry-be.js' bin/serve",
     "serve:server-fe": "npx cross-env NODE_ENV=production PORT=64002 PUBLIC_URL='/~server-fe' ENTRY='server/entry-fe.js' bin/serve",
-    "uninstall:cms-dev": "pm2 del cms-dev 1>/dev/null || true; npm run clean:cms-dev && npm run deploy:cms-dev",
+    "uninstall:cms-dev": "pm2 del cms-dev 1>/dev/null",
     "uninstall:server-be": "pm2 del server-be 1>/dev/null",
     "uninstall:server-fe": "pm2 del server-fe 1>/dev/null"
   },
