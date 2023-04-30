@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
-if [ ! -f "src/$ENTRY" ]; then
-    echo "Entry point not found: '$ENTRY'";
+ENTRY=$1;
+
+if [[ "$ENTRY" != "src/"* || "$ENTRY" = *"/.."* ]]; then
+    echo "Invalid entry point: '$ENTRY'";
     exit 1;
 fi
 
-if [ ! "$PORT" ]; then
-    echo "Port not defined.";
+if [ ! -f "$ENTRY" ]; then
+    echo "Entry point not found: '$ENTRY'";
     exit 1;
 fi
 
@@ -15,5 +17,5 @@ recentBuild="$(find "dist/server/build_timestamp" -mmin -1)";
 
 [ -z "$recentBuild" ] && npm run "build:server";
 
-node "dist/server/src/$ENTRY"
+node "dist/server/$ENTRY"
 

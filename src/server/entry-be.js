@@ -83,7 +83,7 @@ function cmsQuery(h) {
   });
 }
 
-start(server => {
+const init = server => {
   // Server setup
   server.disable('etag');
 
@@ -180,5 +180,10 @@ start(server => {
   }));
 
   server.use(customErrorMiddleware({debug}));
+};
+
+start({
+  ...serverConfig.server["entry-be"],
+  init,
 });
 

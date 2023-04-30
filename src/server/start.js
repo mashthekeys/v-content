@@ -13,37 +13,33 @@ import "core-js/features/object/from-entries";
 import express from "express";
 import LogConsole from "./log-console.js";
 
-export default async function start(initServer) {
+export default async function start(options) {
   LogConsole.install();
 
   console.timestampPreamble();
-  console.both('Server started');
+  console.warn('Server starting');
 
   /* ============================================================
    * Set up the server
    * ============================================================ */
   const server = express();
 
-  const PORT = (process.env.PORT | 0) || 8080;
+  const debug = options.debug = options.debug ?? (process.env.NODE_ENV === 'development');
 
-  const {NODE_ENV} = process.env;
+  const {init, trustProxy} = options;
 
-  const debug = NODE_ENV === 'development';
+  const port = (options.port | 0) || 8080;
 
   server.use(console.timestampMiddleware());
 
-  server.set('trust proxy', true);
-
-  const options = {debug};
-
-  await initServer(server, options);
+  if (trustProxy) server.set('trust proxy', true);
 
   /* ============================================================
    * Gracefully handle signals and log end of process
    * ============================================================ */
   let exitTimestamped = false;
 
-  // Allow up to 100 process listeners before warning appear in the log
+  // Allow up to 100 process listeners before warnings appear in the log
   process.setMaxListeners(100);
 
   process.on("SIGINT", () => {
@@ -63,11 +59,15 @@ export default async function start(initServer) {
   process.on("exit", () => {
     exitTimestamped || console.timestampPreamble();
     console.warn("Process terminating.");
-    console.log("Process terminating.");
   });
 
   /* ============================================================
    * Run the server
    * ============================================================ */
-  server.listen(PORT);
+  await init?.(server, options);
+
+  server.listen(port);
+
+  console.timestampPreamble();
+  console.warn("Listening on port " + port);
 }
