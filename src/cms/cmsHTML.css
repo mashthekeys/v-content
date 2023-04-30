@@ -1,0 +1,247 @@
+
+/*footer { display: block; }*/
+
+/*header { display: block; }*/
+/*main { display: block; }*/
+/*nav { display: block; }*/
+
+/*dd { display: block; }*/
+/*dt { display: block; }*/
+/*li { display: block; }*/
+/*summary { display: block; }*/
+
+/*fieldset { display: block; }*/
+/*button { display: inline; }*/
+/*datalist { display: inline; }*/
+/*input { display: inline; }*/
+/*label { display: inline; }*/
+/*meter { display: inline; }*/
+/*output { display: inline; }*/
+/*progress { display: inline; }*/
+/*select { display: inline; }*/
+/*textarea { display: inline; }*/
+
+/*audio { display: inline-block; }*/
+/*canvas { display: inline-block; }*/
+/*dialog { display: block; }*/
+/*dfn { display: inline; }*/
+/*embed { display: inline-block; }*/
+/*iframe { display: inline-block; }*/
+/*noscript { display: inline; }*/
+/*object { display: inline-block; }*/
+/*script { display: inline; }*/
+/*slot { display: inline; }*/
+/*template { display: inline; }*/
+/*video { display: inline-block; }*/
+
+/*br { display: inline; }*/
+/*details { display: block; }*/
+/*hr { display: block; }*/
+/*table { display: block; }*/
+
+/*article { display: block; }*/
+/*aside { display: block; }*/
+/*section { display: block; }*/
+
+/*address { display: block; }*/
+/*bdi { display: inline; }*/
+/*bdo { display: inline; }*/
+/*data { display: inline; }*/
+/*figcaption { display: block; }*/
+/*figure { display: block; }*/
+/*hgroup { display: block; }*/
+/*img { display: inline; }*/
+/*map { display: inline; }*/
+/*picture { display: inline; }*/
+/*ruby { display: inline; }*/
+/*svg { display: inline; }*/
+/*time { display: inline; }*/
+/*wbr { display: inline; }*/
+
+a {
+  /*display: inline;*/
+  text-decoration: dotted underline;
+}
+abbr {
+  /*display: inline;*/
+  text-decoration: dashed underline;
+}
+acronym {
+  /*display: inline;*/
+  text-decoration: dashed underline;
+}
+b {
+  /*display: inline;*/
+  font-weight: bold;
+}
+big {
+  /*display: inline;*/
+  font-size: 105%;
+}
+/*cite { display: inline; }*/
+code {
+  /*display: inline;*/
+  font-family: monospace;
+}
+del {
+  /*display: inline;*/
+  text-decoration: dotted line-through red;
+  opacity: 0.8;
+}
+em {
+  /*display: inline;*/
+  font-style: italic;
+}
+i {
+  /*display: inline;*/
+  font-style: italic;
+}
+ins {
+  /*display: inline;*/
+  text-decoration: dotted underline green;
+}
+kbd {
+  /*display: inline;*/
+  font-weight: bold;
+}
+mark {
+  /*display: inline;*/
+  background-color: yellow;
+}
+
+/*.html-q, q {
+  display: inline;
+}*/
+
+/* Outer level quotation */
+.html-blockquote::before, blockquote::before,
+.html-q::before, q::before {
+  content: '“';
+}
+.html-blockquote::after, blockquote::after,
+.html-q::after, q::after {
+  content: '”';
+}
+/* Odd level quotation */
+:is(.html-blockquote::before, blockquote, .html-q, q) :is(.html-blockquote::before, blockquote, .html-q, q)::before,
+:is(.html-blockquote::before, blockquote, .html-q, q) :is(.html-blockquote::before, blockquote, .html-q, q) :is(.html-blockquote::before, blockquote, .html-q, q) :is(.html-blockquote::before, blockquote, .html-q, q)::before {
+  content: '‘';
+}
+:is(.html-blockquote::before, blockquote, .html-q, q) :is(.html-blockquote::before, blockquote, .html-q, q)::after,
+:is(.html-blockquote::before, blockquote, .html-q, q) :is(.html-blockquote::before, blockquote, .html-q, q) :is(.html-blockquote::before, blockquote, .html-q, q) :is(.html-blockquote::before, blockquote, .html-q, q)::after {
+  content: '’';
+}
+/* Even level quotation */
+:is(.html-blockquote::before, blockquote, .html-q, q) :is(.html-blockquote::before, blockquote, .html-q, q) :is(.html-blockquote::before, blockquote, .html-q, q)::before {
+  content: '“';
+}
+:is(.html-blockquote::before, blockquote, .html-q, q) :is(.html-blockquote::before, blockquote, .html-q, q) :is(.html-blockquote::before, blockquote, .html-q, q)::after {
+  content: '”';
+}
+
+s {
+  /*display: inline;*/
+  text-decoration: line-through;
+}
+samp {
+  /*display: inline;*/
+  font-family: monospace;
+}
+small {
+  /*display: inline;*/
+  font-size: 95.2%;
+}
+/*span { display: inline; }*/
+
+strong {
+  /*display: inline;*/
+  font-weight: bold;
+}
+sub {
+  /*display: inline;*/
+  vertical-align: sub;
+  font-size: 83%;
+}
+sup {
+  /*display: inline;*/
+  vertical-align: super;
+  font-size: 83%;
+}
+u {
+  /*display: inline;*/
+  text-decoration: underline;
+}
+tt {
+  /*display: inline;*/
+  font-family: monospace;
+}
+var {
+  /*display: inline;*/
+  font-style: italic;
+}
+
+.html-blockquote, blockquote {
+  /*display: block;*/
+  margin-left: 2rem;
+  margin-right: 2rem;
+
+  position: relative;
+}
+.html-blockquote::before, blockquote::before {
+  position: absolute;
+  display: block;
+  top: auto;
+  left: -1.2em;
+  width: 1.2em;
+  text-align: right;
+}
+
+
+/*div { display: block; }*/
+
+/*dl { display: block; }*/
+h1 {
+  /*display: block;*/
+  font-weight: 900;
+  font-size: 1.6rem;
+}
+h2 {
+  /*display: block;*/
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+h3 {
+  /*display: block;*/
+  font-weight: 900;
+  font-size: 1.4rem;
+}
+h4 {
+  /*display: block;*/
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+h5 {
+  /*display: block;*/
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+h6 {
+  /*display: block;*/
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/*ol { display: block; }*/
+p {
+  /*display: block;*/
+
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+pre {
+  /*display: block;*/
+  font-family: monospace;
+  white-space: pre;
+}
+/*ul { display: block; }*/

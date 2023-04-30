@@ -3,8 +3,14 @@ import VueI18Next from "@panter/vue-i18next";
 import i18next from "i18next";
 
 import app_en from "./app.en.json";
+import lang from "@/mixins/lang.js";
 
 Vue.use(VueI18Next);
+
+// Patch $t with a computed mixin
+delete Vue.prototype.$t;
+
+Vue.mixin(lang);
 
 export default function createI18n(options) {
     options = options || {};
