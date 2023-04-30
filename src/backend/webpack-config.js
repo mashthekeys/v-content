@@ -9,7 +9,7 @@ const SASS = require("sass");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const VuetifyLoaderPlugin = require("vuetify-loader/lib/plugin")
 const fs = require("fs");
-const config = require("../config/config.js");
+const config = require("../../config/config.js");
 
 
 function makeConfig({name: appName, folder: appFolder, watch}) {
